@@ -3,16 +3,15 @@ import Profile from "./components/Profile";
 import Friends from "./components/Friends";
 
 const Messages = () => {
-  return <h2>Страница с сообщенями</h2>
-}
+  return <h2>Страница с сообщениями</h2>;
+};
 const Settings = () => {
-  return <h2>Страница  с настройками</h2>
-}
-
+  return <h2>Страница с настройками</h2>;
+};
 
 
 function App(props) {
-  console.log(props);
+  //console.log(props);
   return (
     <div className="container-fluid">
       <BrowserRouter>
@@ -34,14 +33,20 @@ function App(props) {
             </div>
           </div>
           <div className="col-9">
-            <Route path='/profile' render={() => <Profile function={props.function.key_getUser} />} />
-            <Route path='/messages' component={Messages} />
-            <Route path='/settings' component={Settings} />
-            <Route path='/friends' render={() => <Friends function={props.function.key_getUsers} />} />
+            <Route
+              path="/profile"
+              render={() => <Profile function={props.functions.key_getUser} />}
+            />
+            <Route path="/messages" component={Messages} />
+            <Route path="/settings" component={Settings} />
+            <Route
+              path="/friends"
+              render={() => <Friends function={props.functions.key_getUsers} />}
+            />
           </div>
         </div>
       </BrowserRouter>
-    </div >
+    </div>
   );
 }
 
