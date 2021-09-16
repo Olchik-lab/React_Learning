@@ -1,22 +1,18 @@
 import { BrowserRouter, NavLink, Route } from "react-router-dom";
+import Profile from "./components/Profile";
+import Friends from "./components/Friends";
 
-const Profile = () => {
-  return (
-    <h2>Страница с профилем</h2>
-  )
-};
 const Messages = () => {
   return <h2>Страница с сообщенями</h2>
 }
 const Settings = () => {
   return <h2>Страница  с настройками</h2>
 }
-const Friends = () => {
-  return <h2>Страница с друзьями</h2>
-}
 
 
-function App() {
+
+function App(props) {
+  console.log(props);
   return (
     <div className="container-fluid">
       <BrowserRouter>
@@ -38,10 +34,10 @@ function App() {
             </div>
           </div>
           <div className="col-9">
-            <Route path='/profile' component={Profile} />
+            <Route path='/profile' render={() => <Profile function={props.function.key_getUser} />} />
             <Route path='/messages' component={Messages} />
             <Route path='/settings' component={Settings} />
-            <Route path='/friends' component={Friends} />
+            <Route path='/friends' render={() => <Friends function={props.function.key_getUsers} />} />
           </div>
         </div>
       </BrowserRouter>
