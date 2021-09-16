@@ -1,22 +1,24 @@
-import React from "react"
+import React from "react";
 
 const TableRow = (props) => {
     return (
         <tr>
-            <th scope="row">{props.index}</th>
-            <td>{props.name} {props.lastname}</td>
+            <th scope="row">{props.index + 1}</th>
+            <td>
+                {props.name} {props.lastname}
+            </td>
         </tr>
     );
-}
-
+};
 
 const Friends = (props) => {
     let users = props.function();
-    // console.log(Odject.keys(user).length);
-    let userCount = Odject.keys(user).length;
+    //console.log(Object.keys(users).length);
+    let userCount = Object.keys(users).length;
     let userRow = [];
+
     for (let i = 0; i < userCount; i++) {
-        userRow.push(<TableRow index={i} name={users[i].name} {users[i].lastname} />)
+        userRow.push(<TableRow index={i} key={i} name={users[i].name} lastname={users[i].lastname} />);
     }
     return (
         <table className="table">
@@ -24,10 +26,9 @@ const Friends = (props) => {
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Фамилия и имя</th>
-
                 </tr>
             </thead>
-            <tbody>{TableRow}</tbody>
+            <tbody>{userRow}</tbody>
         </table>
     );
 };
